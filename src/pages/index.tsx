@@ -22,10 +22,16 @@ import sampleData from "@/sampleData.json";
  */
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>(sampleData);
+  const [id, setId] = useState(todos.length);
+
+  const getId = () => {
+    setId(prevId => prevId + 1);
+    return id + 1;
+  };
 
   const AddTodo = (title: string, desc: string) => {
     const newTodo: Todo = {
-      id: todos.length + 1,
+      id: getId(),
       title: title,
       description: desc,
       isCompleted: false,
